@@ -1,7 +1,7 @@
 ﻿@page "/blog"
 @inject AppDbContext _dbContext
 
-<h3>Blog</h3>
+@* <h3>Blog</h3>
 
 <MudAlert Severity="Severity.Normal">The reactor type is RBMK-1000</MudAlert>
 <MudAlert Severity="Severity.Info">The reactor was fired up successfully</MudAlert>
@@ -12,4 +12,12 @@
 <RadzenButton Text="@text"></RadzenButton>
 @code {
     string text = "Hi";
-}
+} *@
+
+<p>@reqModel.Blog_Id</p>
+<RadzenTextBox @bind-Value="@reqModel.Blog_Title" />
+<RadzenTextBox @bind-Value="@reqModel.Blog_Author" />
+<RadzenTextBox @bind-Value="@reqModel.Blog_Content" />
+
+<MudButton Variant="Variant.Outlined" OnClick="Cancel">Cancel</MudButton>
+<MudButton Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Save" OnClick="Save" Color="Color.Success">Save</MudButton>

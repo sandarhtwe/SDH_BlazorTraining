@@ -18,6 +18,7 @@
             await _dbContext.Blogs.AddAsync(reqModel);
             await _dbContext.SaveChangesAsync();
 
+            _injectService.ShowMessage(new ResponseModel("000","Saving Successful",EnumResponseType.Success));
             reqModel=new BlogDataModel();
         }
     }

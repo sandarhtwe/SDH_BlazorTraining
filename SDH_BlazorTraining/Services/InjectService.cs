@@ -21,5 +21,5 @@ namespace SDH_BlazorTraining.Services
             _dialogService.Show<MessageBox>(response.RespType.ToString(), parameters, options);
         }
     }
-    }
+    
 }

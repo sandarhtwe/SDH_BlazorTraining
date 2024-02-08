@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using MudBlazor.Services;
 using SDH_BlazorTraining.Data;
 using SDH_BlazorTraining.Db;
+using SDH_BlazorTraining.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 
 builder.Services.AddMudServices();
+builder.Services.AddScoped<InjectService>();
 
 builder.Services.AddSingleton<WeatherForecastService>();
 

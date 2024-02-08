@@ -1,0 +1,30 @@
+﻿<MudDialog>
+    <DialogContent>
+        <MudText>@Response.RespDesp</MudText>
+    </DialogContent>
+    <DialogActions>
+        <MudButton Color="@GetButtonColor()" Variant="Variant.Filled" OnClick="Submit">Ok</MudButton>
+    </DialogActions>
+</MudDialog>
+@code {
+    [CascadingParameter] MudDialogInstance MudDialog { get; set; }
+
+    [Parameter] public ResponseModel? Response { get; set; }
+
+    void Submit() => MudDialog.Close(DialogResult.Ok(true));
+
+    public Color GetButtonColor()
+    {
+        if (Response is null) return Color.Default;
+        var color = Response.RespType switch
+        {
+            EnumResponseType.None => Color.Default,
+            EnumResponseType.Success => Color.Success,
+            EnumResponseType.Information => Color.Info,
+            EnumResponseType.Warning => Color.Warning,
+            EnumResponseType.Error => Color.Error,
+            _ => Color.Default
+        };
+        return color;
+    }
+}

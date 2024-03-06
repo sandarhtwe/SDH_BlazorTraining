@@ -1,8 +1,20 @@
-﻿namespace SDH_BlazorTraining.Pages.Blog
+﻿using Radzen.Blazor;
+
+namespace SDH_BlazorTraining.Pages.Blog
 {
     public partial class P_Blog
     {
         private BlogDataModel reqModel { get; set; } = new BlogDataModel();
+        RadzenDataGrid<BlogDataModel> dataGrid;
+        private List<BlogDataModel> dataList;
+
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            if(firstRender)
+            {
+
+            }
+        }
 
         private void Cancel()
         {
@@ -19,7 +31,7 @@
             await _dbContext.SaveChangesAsync();
 
             _injectService.ShowMessage(new ResponseModel("000","Saving Successful",EnumResponseType.Success));
-            reqModel=new BlogDataModel();
+            //reqModel=new BlogDataModel();
         }
     }
 }
